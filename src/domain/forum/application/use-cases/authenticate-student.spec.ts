@@ -2,7 +2,7 @@ import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students
 import { FakeHasher } from 'test/cryptography/fake-hasher';
 import { AuthenticateStudentUseCase } from './authenticate-student';
 import { makeStudent } from 'test/factories/make-student';
-import { FakeEncrypter } from 'test/cryptography/fake-encrypt';
+import { FakeEncrypter } from 'test/cryptography/fake-encrypter';
 
 let inMemoryStudentsRepository: InMemoryStudentsRepository;
 let fakeHasher: FakeHasher;
