@@ -5,6 +5,7 @@ import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard';
 import { UserPayload } from '@/infra/auth/jwt.strategy';
 import { CurrentUser } from '@/infra/auth/current-user-decorator';
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question';
+import { Public } from '@/infra/auth/public';
 
 const createQuestionBodySchema = z.object({
   title: z.string(),
@@ -16,6 +17,7 @@ const bodyValidationPipe = new ZodValidationPipe(createQuestionBodySchema)
 type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>
 
 @Controller('/questions')
+@Public()
 @UseGuards(JwtAuthGuard)
 export class CreateQuestionController {
 
