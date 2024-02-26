@@ -1,5 +1,4 @@
 import { AppModule } from '@/infra/app.module';
-import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { DatabaseModule } from '@/infra/database/database.module'
 import { INestApplication } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
@@ -11,7 +10,6 @@ import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug';
 
 describe('Get question by slug (E2E)', () => {
     let app: INestApplication;
-    let prisma: PrismaService;
     let studentFactory: StudentFactory
     let questionFactory: QuestionFactory
     let jwt: JwtService;
@@ -26,7 +24,6 @@ describe('Get question by slug (E2E)', () => {
         studentFactory = moduleRef.get(StudentFactory)
         questionFactory = moduleRef.get(QuestionFactory)
 
-        prisma = moduleRef.get(PrismaService);
         jwt = moduleRef.get(JwtService);
 
         await app.init();
