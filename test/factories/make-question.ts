@@ -1,11 +1,12 @@
+import { faker } from '@faker-js/faker'
+
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import {
   Question,
   QuestionProps,
 } from '@/domain/forum/enterprise/entities/question'
-import { PrismaQuestionMapper } from '@/infra/database/prisma/mappers/prisma-question-mapper'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
-import { faker } from '@faker-js/faker'
+import { PrismaQuestionMapper } from '@/infra/database/prisma/mappers/prisma-question-mapper'
 import { Injectable } from '@nestjs/common'
 
 export function makeQuestion(
@@ -27,7 +28,7 @@ export function makeQuestion(
 
 @Injectable()
 export class QuestionFactory {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async makePrismaQuestion(
     data: Partial<QuestionProps> = {},

@@ -4,9 +4,10 @@ import { Answer } from '../../enterprise/entities/answer';
 import { Either, right } from '@/core/either';
 import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachment-list';
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment';
+import { Injectable } from '@nestjs/common';
 
 interface AnswerQuestionUseCaseRequest {
-  instructorId: string;
+  authorId: string;
   questionId: string;
   attachmentsIds: string[];
   content: string;
@@ -14,19 +15,20 @@ interface AnswerQuestionUseCaseRequest {
 
 type AnswerQuestionUseCaseResponse = Either<null, { answer: Answer }>;
 
+@Injectable()
 export class AnswerQuestionUseCase {
 
   constructor(private answersRepository: AnswersRepository) { }
 
   async execute({
-    instructorId,
+    authorId,
     questionId,
     content,
     attachmentsIds,
   }: AnswerQuestionUseCaseRequest): Promise<AnswerQuestionUseCaseResponse> {
     const answer = Answer.create({
       questionId: new UniqueEntityID(questionId),
-      authorId: new UniqueEntityID(instructorId),
+      authorId: new UniqueEntityID(authorId),
       content,
     });
 
