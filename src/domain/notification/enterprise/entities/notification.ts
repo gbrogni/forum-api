@@ -1,38 +1,38 @@
-import { Entity } from '@/core/entities/entity'
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { Optional } from '@/core/types/optional'
+import { Entity } from '@/core/entities/entity';
+import { UniqueEntityID } from '@/core/entities/unique-entity-id';
+import { Optional } from '@/core/types/optional';
 
 export interface NotificationProps {
-  recipientId: UniqueEntityID
-  title: string
-  content: string
-  readAt?: Date
-  createdAt: Date
+  recipientId: UniqueEntityID;
+  title: string;
+  content: string;
+  readAt?: Date;
+  createdAt: Date;
 }
 
 export class Notification extends Entity<NotificationProps> {
   get recipientId(): UniqueEntityID {
-    return this.props.recipientId
+    return this.props.recipientId;
   }
 
   get title(): string {
-    return this.props.title
+    return this.props.title;
   }
 
   get content(): string {
-    return this.props.content
+    return this.props.content;
   }
 
   get readAt(): Date | undefined {
-    return this.props.readAt
+    return this.props.readAt;
   }
 
   get createdAt(): Date {
-    return this.props.createdAt
+    return this.props.createdAt;
   }
 
   read() {
-    this.props.readAt = new Date()
+    this.props.readAt = new Date();
   }
 
   static create(
@@ -45,6 +45,6 @@ export class Notification extends Entity<NotificationProps> {
         createdAt: new Date(),
       },
       id,
-    )
+    );
   }
 }
