@@ -18,14 +18,14 @@ export async function waitFor(
       elapsedTime += 10
 
       try {
-        assertions()
-        clearInterval(interval)
-        resolve()
+        assertions();
+        clearInterval(interval);
+        resolve();
       } catch (err) {
         if (elapsedTime >= maxDuration) {
-          reject(err)
+          reject(err);
         }
       }
-    }, 10)
-  })
+    }, 10);
+  });
 }
