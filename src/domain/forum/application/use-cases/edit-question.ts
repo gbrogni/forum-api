@@ -13,7 +13,7 @@ interface EditQuestionUseCaseRequest {
   questionId: string;
   title: string;
   content: string;
-  attachmentIds: string[];
+  attachmentsIds: string[];
 }
 
 type EditQuestionUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, { question: Question }>;
@@ -28,7 +28,7 @@ export class EditQuestionUseCase {
     questionId,
     title,
     content,
-    attachmentIds,
+    attachmentsIds: attachmentIds,
   }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId);
 
