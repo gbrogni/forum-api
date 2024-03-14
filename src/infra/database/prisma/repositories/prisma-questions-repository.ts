@@ -99,6 +99,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
             await this.questionAttachmentsRepository.deleteMany(question.attachments.getRemovedItems()),
         ]);
 
+        DomainEvents.dispatchEventsForAggregate(question.id);
     }
 
     async delete(question: Question): Promise<void> {
@@ -109,7 +110,5 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
                 id: data.id,
             },
         });
-
-        DomainEvents.dispatchEventsForAggregate(question.id);
     }
 }
