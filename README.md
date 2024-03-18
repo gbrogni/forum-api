@@ -52,5 +52,5 @@ In this project, I'm using unit tests and end-to-end (e2e) tests. To execute the
 ### Unit Tests
 `npm run test`
 
-### End-To_End Tests
+### End-To-End Tests
 `npm run test:e2e`
