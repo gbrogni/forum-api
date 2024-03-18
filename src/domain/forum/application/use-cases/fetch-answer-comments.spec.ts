@@ -5,8 +5,8 @@ import { makeAnswerComment } from 'test/factories/make-answer-comment';
 import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository';
 import { makeStudent } from 'test/factories/make-student';
 
-let inMemoryStudentsRepository: InMemoryStudentsRepository;
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository;
+let inMemoryStudentsRepository: InMemoryStudentsRepository;
 let sut: FetchAnswerCommentsUseCase;
 
 describe('Fetch Answer Comments', () => {
@@ -73,7 +73,9 @@ describe('Fetch Answer Comments', () => {
       await inMemoryAnswerCommentsRepository.create(
         makeAnswerComment({
           answerId: new UniqueEntityID('answer-1'),
-        }));
+          authorId: student.id,
+        }),
+      );
     }
 
     const result = await sut.execute({
