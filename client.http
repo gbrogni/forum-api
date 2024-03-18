@@ -1,42 +1,55 @@
+### Request 1
 @baseUrl = http://localhost:3333
 @authToken = {{authenticate.response.body.access_token}}
 
 # @name create_account
-POST {{baseUrl}}/accounts
+POST {{baseUrl}}/account
 Content-Type: application/json
 
 {
-  "name": "Gabriel Brogni",
-  "email": "harden13broggni@gmail.com",
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
   "password": "123456"
 }
 
 ###
 
 # @name authenticate
-POST {{baseUrl}}/sessions
+POST {{baseUrl}}/session
 Content-Type: application/json
 
 {
-  "email": "harden13broggni@gmail.com",
+  "email": "johndoe@gmail.com",
   "password": "123456"
 }
 
 ###
 
 # @name create_question
-POST {{baseUrl}}/questions
+POST {{baseUrl}}/question
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "Nova pergunta 2",
-  "content": "Teste"
+  "title": "Nova pergunta 3",
+  "content": "conteúdo da pergunta"
 }
 
 ###
 
 # @name fetch_recent_questions
-GET {{baseUrl}}/questions?page=1
+GET {{baseUrl}}/question?page=1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
+
+###
+
+# @name create_question
+PUT {{baseUrl}}/question/75ef2457-f08a-454c-8c23-e2877e69b12a
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Nova pergunta 3 editada",
+  "content": "conteúdo da pergunta 3 editada"
+}
