@@ -16,7 +16,7 @@ This API allows users to create questions, provide answers, attach files, commen
 Make sure you have Node.js in the version 16.20.2 and npm installed on your machine.
 
 1. Clone this repository:
-   `git clone https://github.com/gbrogni/nestjs-api.git`
+   `git clone https://github.com/gbrogni/forum-api.git`
   
 2. Install dependencies
    `cd nestjs-api`
