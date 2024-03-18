@@ -20,6 +20,7 @@ Make sure you have Node.js in the version 16.20.2 and npm installed on your mach
   
 2. Install dependencies
    `cd nestjs-api`
+   
    `npm install`
 
 ## Configuration
@@ -27,8 +28,11 @@ Make sure you have Node.js in the version 16.20.2 and npm installed on your mach
 1. Rename the .env.example file to .env and configure the environment variables as needed.
 2. The authentication strategy used is JWT with RSA-256 algorithm. Therefore, you should generate the public and private keys of the algorithm and convert them to Base64.
    `openssl genrsa -out private.pem 2048`
+   
    `openssl rsa -in private.pem -pubout -out public.pem`
+   
    `base64 private.pem`
+   
    `base64 public.pem`
 3.Additionally, we use Cloudflare R2 for storing question and answer attachments. The interesting aspect is that it uses the same AWS S3 API, which facilitates switching if necessary.
  Given this, for end-to-end (e2e) testing, simply create the bucket in Cloudflare with a 1-day lifecycle to prevent test attachments from accumulating.
